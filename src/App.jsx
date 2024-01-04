@@ -3,6 +3,7 @@ import './App.css'
 import NavBar from './components/NavBar';
 import Page from './components/Page';
 import { store } from './Redux/store';
+import Productitem from './components/Productitem';
 
 function App() {
   return(

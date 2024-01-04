@@ -25,31 +25,33 @@ function AddProduct() {
         >
             <div className='space-y-2'>
                 <label>Product Name</label>
-                <input type='text' className='addProductInput'{...register("Name", { required: true })} />
-                {errors.Name && <span>This field is required</span>}
+                <input type='text' className='addProductInput'{...register("name", { required: true })} />
+                {errors.name && <span>This field is required</span>}
             </div>
+            <div className="space-y-2">
+            <label>Category</label>
+            <select className="addProductInput"
+            {...register("category", { required: true })}>
+              <option value="">Select a category</option>
+              <option value="clothing">Clothing</option>
+              <option value="gadgets">Gadgets</option>
+              <option value="bags">Bags</option>
+            </select>
+            {errors.category && <span className="category text-red-600">Category is required</span>}
+          </div>
             <div className='space-y-2'>
-                <label>Category</label>
-                <select className='addProductInput'>
-                    <option value="">Select a Category</option>
-                    <option value="clothing">Clothing</option>
-                    <option value="gadget">Gadgets</option>
-                    <option value="bags">Bags</option>
-                </select>
-            </div>
-            <div className='space-y-2'>
-                <label>Image URL</label>
+                <label>ImageURL</label>
                 <input type='text' className='addProductInput' {...register("imageURL", { required: true })}/>
                 {errors.imageURL && <span>This field is required</span>}
             </div>
             <div className='grid grid-cols-2 gap-8 pd-4'>
                 <div className='space-y-2'>
-                    <label>Price</label>
+                    <label>price</label>
                     <input type='number' className='addProductInput' {...register("price", { required: true , min: 0 })}/>
                     {errors.price && <span>Please enter a valid Price</span>}
                 </div>
                 <div className='space-y-2'>
-                    <label>Quantity</label>
+                    <label>quantity</label>
                     <input type='number' className='addProductInput' id='lws-inputQuantity' {...register("quantity", { required: true , min: 0 })}/>
                     {errors.quantity && <span>Please enter a valid quantity</span>}
                    </div> 
