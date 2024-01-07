@@ -12,7 +12,7 @@ const Productitem = ({product}) => {
     }
 
   return (
-    <div className="card md:w-96 bg-base-100 shadow-x1">
+    <div className="card md:w-96 bg-base-100 shadow-xl">
         <figure className='relative'>
             <img src={imageURL} alt={name} className="h-80 w-full" />
             <div className="badge badge-secodary absolute top-3 right-3">
@@ -21,7 +21,8 @@ const Productitem = ({product}) => {
         </figure>
         <div className='card-body'>
             <h2 className='card-title'>{name}</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore nisi totam mollitia quas sint repudiandae animi, sequi ad commodi, nesciunt, pariatur illum odio obcaecati perspiciatis voluptate cupiditate vero vitae beatae.
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore nisi totam mollitia quas sint repudiandae animi,
+                sequi ad commodi, nesciunt, pariatur illum odio obcaecati perspiciatis voluptate cupiditate vero vitae beatae.
 
             </p>
         </div>
@@ -41,3 +42,4 @@ const Productitem = ({product}) => {
 }
 
 export default Productitem;
+
