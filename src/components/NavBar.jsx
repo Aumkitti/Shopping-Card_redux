@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 const NavBar = () => {
   //sub
@@ -8,6 +8,10 @@ const NavBar = () => {
   //compute number of item
   const cartItemNo = carts.reduce((total, product) => total + product.quantity, 0)
 
+  const dispatch = useDispatch();
+  const handlePageChange = (type) =>{
+    dispatch({type });
+  }
 
   return (
     <nav className=" bg-black text-white mx-auto ">
@@ -17,10 +21,14 @@ const NavBar = () => {
   </div>
   <div className="flex-none space-x-4">
     <div className="dropdown dropdown-end front-semibold">
-        <button>Home</button>
+        <button onClick={() => handlePageChange("HOME")}>Home</button>
     </div>
     <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+      <div tabIndex={0} 
+      role="button" 
+      className="btn btn-ghost btn-circle"
+      onClick={() => handlePageChange("CART")}
+      >
         <div className="indicator">
           <svg xmlns="http://www.w3.org/2000/svg" 
           className="h-5 w-5" fill="none" viewBox="0 0 24 24" 
@@ -32,7 +40,11 @@ const NavBar = () => {
       </div>
     </div>
     <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+      <div tabIndex={0} 
+      role="button" 
+      className="btn btn-ghost btn-circle avatar"
+
+      >
         <div className="w-10 rounded-full">
           <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
         </div>
