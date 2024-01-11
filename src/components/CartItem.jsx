@@ -9,22 +9,26 @@ const CartItem = ({product}) => {
     const dispatch = useDispatch()
     const handleRemoveFromCart = () => {
         dispatch(removeFromCart(id));
-        dispatch(addQuantity(productId, quantity));
+        dispatch(addQuantity(productId, quantity,));
+        
     }
+    if(quantity === 0) {
+            handleRemoveFromCart();
+        }
 
     const handleAddQuantity = () => {
         dispatch(increaseQuantity(id))
-        dispatch(removeQuantity(productId, quantity))
+        dispatch(removeQuantity(productId))
     }
 
     const handleDecreaseQuantity = () => {
         dispatch(decreaseQuantity(id))
-        dispatch(addQuantity(productId,quantity))
+        dispatch(addQuantity(productId, 1))
     }
   return (
     <div>
         <div className="rounded-lg">
-            <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+            <div className="justify-between mb-6 rounded-lg bg-white p-5 shadow-md sm:flex sm:justify-start">
                 <img src={imageURL} 
                 alt={product} 
                 className="w-full h-28 rounded sm:w-40" />
@@ -43,19 +47,19 @@ const CartItem = ({product}) => {
                 </div>
                 <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                     <div className="flex item-center border-gray-100">
-                        <span className="cursor-pointer rounded-l bg-grat-100 py-1 px-3 5 duration-100 hover:bg-blue-500 hover:text-blue-500" onClick={handleDecreaseQuantity}>
+                        <span className="cursor-pointer rounded-l bg-grat-100 py-1 px-3 5 duration-100 hover:bg-black hover:text-white" onClick={handleDecreaseQuantity}>
                             {""}-{""}
                         </span>
-                            <input type="number" min="1" value={quantity} className="h-8 w-8 border bg-white text-center text-xs outline-none" />
-                        <span className="cursor-pointer rounded-l bg-grat-100 py-1 px-3 5 duration-100 hover:bg-blue-500 hover:text-blue-500" onClick={handleAddQuantity}>
+                            <input type="number" min='1' value={quantity} className="h-8 w-8 border bg-white text-center text-xs outline-none text-black" />
+                        <span className="cursor-pointer rounded-l bg-grat-100 py-1 px-3 5 duration-100 hover:bg-black hover:text-white" onClick={handleAddQuantity}>
                             {""}+{""}
                         </span>
                         <div className="flex-item-center space-x-4">
-                            <p className="text-sm">
+                            <p className="text-sm text-black">
                                 {price * quantity}฿
                             </p>
-                            <button className="lws-removeFromCart" onClick={handleRemoveFromCart}>
-                            
+                            <button className="lws-removeFromCart" onClick={handleRemoveFromCart} >
+                        
                             <IoMdClose />
                             </button>
                         </div>
